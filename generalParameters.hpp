@@ -9,8 +9,7 @@ const std::string alphabet_lower = "abcdefghijklmnopqrstuvwxyz";
 enum class Align
 {
     HORIZONTAL,
-    VERTICAL,
-    SQUARE
+    VERTICAL
 };
 
 #endif
