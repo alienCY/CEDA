@@ -10,7 +10,7 @@ enum class Align
 {
     HORIZONTAL,
     VERTICAL,
-    RECTANGLE
+    SQUARE
 };
 
 #endif
