@@ -5,8 +5,7 @@
 
 namespace general
 {
-    void printAlphabet(Align, const std::string &text=alphabet_upper); 
+    void printAlphabet(Align, const std::string& =alphabet_upper, const std::string& =""); 
 }                                                          
 
 #endif
-
