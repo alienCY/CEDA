@@ -22,11 +22,6 @@ namespace general
                     general::printAlphabet(Align::HORIZONTAL, text);
                     std::cout << "\n";  // empty line
                     break;
-                case Align::SQUARE:
-                    std::cout << "   "; // 3 spaces before text!
-                    general::printAlphabet(Align::HORIZONTAL, text);
-                    general::printAlphabet(Align::VERTICAL, text);
-                    break;
             }
         }
         //new line after done printing horizontal text
