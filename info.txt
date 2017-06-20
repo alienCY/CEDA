@@ -1,1 +1,0 @@
-CEDA stands for Classical Encryption Decryption Algorithms
