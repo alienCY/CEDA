@@ -5,9 +5,9 @@
 
 namespace general
 {
-    void printAlphabet(Align alignment, const std::string &text)
+    void printAlphabet(Align alignment, const std::string &textOut, const std::string &textIn)
     {
-        for(auto &character : text)
+        for(auto &character : textOut)
         {
             std::cout << character;
             
@@ -15,16 +15,16 @@ namespace general
             {
                 default:
                 case Align::HORIZONTAL:
-                    std::cout << " ";
+                    std::cout << "   "; // 3 spaces between letters.
                     break;
                 case Align::VERTICAL:
                     std::cout << "  ";  // 2 spaces before text!
-                    general::printAlphabet(Align::HORIZONTAL, text);
-                    std::cout << "\n";  // empty line
+                    general::printAlphabet(Align::HORIZONTAL, textIn, textIn); //non necessary second textIn
+                    std::cout << "\n";  // empty line.
                     break;
             }
         }
-        //new line after done printing horizontal text
+        //new line after done printing horizontal text.
         if(alignment == Align::HORIZONTAL)
             std::cout << "\n";  
     }
