@@ -1,4 +1,4 @@
-# ceda
+# CEDA
 Classical Encryption Decryption Algorithms
 
 This project consists of 3 parts:
