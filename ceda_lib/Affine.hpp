@@ -26,7 +26,7 @@ namespace ceda
             : m_text(text), m_aKey(1), m_bKey(0)       {               }
 
         void setKey(int,int,int=26); //3rd argument is alphabetLength
-        void encrypt(std::string);
+        void encrypt();
         void decrypt();
         void printTable(const std::string&);
 
