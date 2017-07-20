@@ -1,0 +1,59 @@
+#!/bin/bash
+
+ADDR_FILE=~/Documents/CEDA         #address to the file
+ADDR_CEDA=$ADDR_FILE/ceda_lib      #address for ceda_lib
+ADDR_GENERAL=$ADDR_FILE/general    #address for general
+ADDR_CLI=$ADDR_FILE/CLI            #address for CLI
+ADDRESSES="$ADDR_CEDA $ADDR_GENERAL $ADDR_CLI"
+
+if [ $1 ]; then                                         #checks for parameters
+    if [ $1 = "-f" ] || [ $1 = "--files" ]; then        #opens files
+        for i in $ADDRESSES; do
+        nautilus $i &
+        done
+        exit 0                                          
+    fi
+    if [ $1 = "-e" ] || [ $1 = "--edit" ]; then         #edits project with vim
+        if [ $2 ]; then                                 #second parameter for edit
+            if [ $2 = "make" ] || [ $2 = "makefiles" ]; then               #opens all makefiles
+                for i in $ADDRESSES; do
+                    gnome-terminal -e "vim $i/makefile &"
+                done
+                gnome-terminal -e "vim $ADDR_FILE/makefile &"
+                exit 0
+            fi
+            echo Invalid second parameter!
+            exit 0
+        fi
+        vim /usr/bin/project                            #if no $2 edit project
+        exit 0
+    fi
+    if [ $1 = "-m" ] || [ $1 = "--make" ]; then         #builds(makes) the project
+        make -C $ADDR_FILE
+        make -C $ADDR_FILE run
+        exit 0
+    fi
+    if [ $1 = "-r" ] || [ $1 = "--run" ]; then          #run project
+        ~/Documents/CEDA/run
+        exit 0
+    fi
+    echo Invalid first parameter!                       #for invalid first parameter
+    exit 0
+fi
+
+function getFile
+{
+    awk 'NR=='$1 $2/startup.txt
+}
+
+for i in $ADDRESSES; do
+    CMD_2=""
+    CMD_3=""
+    if [ $(getFile 2 $i) ]; then                    #checks if line 2 isn't blank
+        CMD_2="-c \"vsp $i/$(getFile 2 $i)\""
+        if [ $(getFile 3 $i) ]; then                #checks if line 3 isn't blank
+            CMD_3="-c \"vsp $i/$(getFile 3 $i)\""
+        fi
+    fi
+    gnome-terminal -e "vim $i/$(getFile 1 $i) $CMD_2 $CMD_3"
+done

@@ -6,6 +6,8 @@
 namespace general
 {
     void printAlphabet(Align, const std::string& =alphabet_upper, const std::string& =""); 
+    int gcd(int,int=26);
 }                                                          
 
 #endif
+

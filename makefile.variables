@@ -1,0 +1,10 @@
+#variables used by all makefiles in project directory
+
+PATH_TO_DIR = ~/Documents/CEDA
+c = $(PATH_TO_DIR)/ceda_lib
+g = $(PATH_TO_DIR)/general
+e = $(PATH_TO_DIR)/CLI         #e for executable
+
+DEPS= $c/Affine.hpp $c/CEDA.hpp $g/generalParameters.hpp $g/generalFunctions.hpp
+CC=g++
+CFLAGS= -Wall -g -I.

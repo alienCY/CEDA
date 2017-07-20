@@ -1,7 +1,8 @@
 #include <iostream>
-#include "generalFunctions.hpp" 
+#include "../general/generalFunctions.hpp" 
 int main()
 {
+    general::printAlphabet(Align::HORIZONTAL);
 
     return 0;
 }

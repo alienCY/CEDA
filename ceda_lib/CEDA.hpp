@@ -2,10 +2,6 @@
 #ifndef CEDA_H
 #define CEDA_H
 
-namespace ceda
-{
-
-}
-
+#include "Affine.hpp"
 
 #endif

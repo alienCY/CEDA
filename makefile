@@ -1,10 +1,12 @@
-CC=g++
-CFLAGS= -Wall -g -I.
-DEPS= generalParameters.hpp generalFunctions.hpp Affine.hpp CEDA.hpp
-OBJ= generalFunctions.o Affine.o main.o
+#start other makefiles
+include makefile.variables
 
-%.o: %.cpp $(DEPS)
-	$(CC) -c $< $(CFLAGS)
+All:
+	$(MAKE) -C general
+	$(MAKE) -C ceda_lib
+	$(MAKE) -C CLI
+
+OBJ = $(wildcard objects/*.o)
 
 run: $(OBJ) $(DEPS)
-	$(CC) -o $@ $^ $(CFLAGS)
+	$(CC) -o $@ $^

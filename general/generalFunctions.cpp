@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "generalParameters.hpp"
+#include "generalFunctions.hpp"
 
 namespace general
 {
@@ -19,7 +20,7 @@ namespace general
                     break;
                 case Align::VERTICAL:
                     std::cout << "  ";  // 2 spaces before text!
-                    general::printAlphabet(Align::HORIZONTAL, textIn, textIn); //non necessary second textIn
+                    general::printAlphabet(Align::HORIZONTAL, textIn);
                     std::cout << "\n";  // empty line.
                     break;
             }
@@ -27,6 +28,14 @@ namespace general
         //new line after done printing horizontal text.
         if(alignment == Align::HORIZONTAL)
             std::cout << "\n";  
+    }
+
+    int gcd(int x, int y)
+    {
+        int remainder = x % y;
+        if(remainder == 0)
+            return x;
+        return general::gcd(x, remainder);
     }
 
 
