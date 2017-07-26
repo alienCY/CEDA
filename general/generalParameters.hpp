@@ -3,13 +3,8 @@
 #include <string>
 //The parameteres used by general functions
 
+const std::string alphabet_full = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ,.:!/'";
 const std::string alphabet_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const std::string alphabet_lower = "abcdefghijklmnopqrstuvwxyz";
-
-enum class Align
-{
-    HORIZONTAL,
-    VERTICAL
-};
 
 #endif

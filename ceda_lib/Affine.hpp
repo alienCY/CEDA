@@ -8,10 +8,10 @@ namespace ceda
     class Affine
     {
     private:
-        const std::string m_encryptedText;
-        const std::string m_decryptedText;
-        const std::string m_text;
-        const std::string m_alphabet;
+        std::string m_encryptedText;
+        std::string m_decryptedText;
+        std::string m_text;
+        std::string m_alphabet=alphabet_upper;
         int m_aKey;
         int m_bKey;
 
@@ -25,14 +25,13 @@ namespace ceda
         Affine(const std::string &text)
             : m_text(text), m_aKey(1), m_bKey(0)       {               }
 
-        void setKey(int,int,int=26); //3rd argument is alphabetLength
+        void setKey(int,int);
         void encrypt();
         void decrypt();
-        void printTable(const std::string&);
+        void printTable();
 
         std::string getEncryptedText() const { return m_encryptedText; }
-        std::string getDecryptedText() const { return m_encryptedText; }
-
+        std::string getDecryptedText() const { return m_decryptedText; }
     };
 }
 #endif

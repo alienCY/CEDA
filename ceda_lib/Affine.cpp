@@ -5,20 +5,49 @@
 #include "../general/generalFunctions.hpp"
 #include "Affine.hpp"
 
-void ceda::Affine::setKey(int aKey, int bKey, int alphabetLength)
+void ceda::Affine::setKey(int aKey, int bKey)
 {
-    assert( 0 <= aKey && 0<= bKey && aKey < alphabetLength && bKey < alphabetLength && "Range");
-    assert(general::gcd(aKey) == 1 && "aKey and 26(length of alphabet) aren't coprime");
+    int length = m_alphabet.size();
+    assert( 0 <= aKey && 0<= bKey && aKey < length && bKey < length && "Range");
+    assert(general::gcd(aKey,m_alphabet.size()) == 1 && "aKey & length of alphabet aren't coprime");
     //if it's ok, set the key
     m_aKey = aKey;
     m_bKey = bKey;
 }
 
 
-void ceda::Affine::printTable(const std::string &alphabet)
+void ceda::Affine::printTable()
 {
-    std::cout << "Decrypted alphabet: ";
-    general::printAlphabet(Align::HORIZONTAL);
-    std::cout << "Encrypted alphabet: ";
-    general::printAlphabet(Align::HORIZONTAL);
+    std::cout << "Decrypted text:\n";
+    std::cout << m_decryptedText;
+    std::cout << "\nEncrypted text:\n";
+    std::cout << m_encryptedText << "\n";
+}
+
+void ceda::Affine::encrypt()
+{
+    m_decryptedText = m_text;
+
+    for(const char &character : m_decryptedText)
+    {
+        int charNum = m_aKey * general::getCharacterNum(character, m_alphabet) + m_bKey;
+        m_encryptedText.push_back( m_alphabet[charNum % m_alphabet.size()] );
+    }
+}
+
+void ceda::Affine::decrypt()
+{
+    m_encryptedText = m_text;
+
+    for(const char &character : m_encryptedText)
+    {
+        int aRev;
+        for(aRev = 1; true; aRev++)
+            if(( (aRev*m_aKey) % m_alphabet.size() ) == 1)
+                break; //aRev is set to the correct value
+        int index = aRev*(general::getCharacterNum(character, m_alphabet) - m_bKey);
+        while(index<0)  //for negative numbers
+            index += m_alphabet.size();
+        m_decryptedText.push_back( m_alphabet[index % m_alphabet.size()] );
+    }
 }

@@ -2,6 +2,6 @@
 #ifndef CEDA_H
 #define CEDA_H
 
-#include "Affine.hpp"
+#include "../ceda_lib/Affine.hpp"
 
 #endif

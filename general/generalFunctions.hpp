@@ -5,8 +5,10 @@
 
 namespace general
 {
-    void printAlphabet(Align, const std::string& =alphabet_upper, const std::string& =""); 
-    int gcd(int,int=26);
+    void printAlphabetH(const std::string& =alphabet_upper, const std::string& ="   ");
+    void printAlphabetV(const std::string& =alphabet_upper, const std::string& =alphabet_lower);
+    int gcd(int,int=26); 
+    int getCharacterNum(char, const std::string& = alphabet_upper);
 }                                                          
 
 #endif
