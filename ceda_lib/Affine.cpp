@@ -16,12 +16,14 @@ void ceda::Affine::setKey(int aKey, int bKey)
 }
 
 
-void ceda::Affine::printTable()
+void ceda::Affine::printTable(std::string spacing)
 {
-    std::cout << "Decrypted text:\n";
-    std::cout << m_decryptedText;
-    std::cout << "\nEncrypted text:\n";
-    std::cout << m_encryptedText << "\n";
+    ceda::Affine alphabet(m_alphabet, m_aKey, m_bKey, m_alphabet);
+    alphabet.encrypt();
+    std::cout << "Decrypted alphabet: ";
+    general::printAlphabetH(alphabet.getDecryptedText(), spacing);
+    std::cout << "Encrypted alphabet: ";
+    general::printAlphabetH(alphabet.getEncryptedText(), spacing);
 }
 
 void ceda::Affine::encrypt()

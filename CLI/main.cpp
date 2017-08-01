@@ -4,9 +4,11 @@
 
 int main()
 {
-    ceda::Affine text("RpKKTPDT.Km,", 3, 3, alphabet_full);
-    text.decrypt();
-    text.printTable();
+    ceda::Affine text("Hello Humans!", 19, 3, alphabet_full);
+    text.encrypt();
+    text.printTable(" ");
+    std::cout << "\nDecrypted Text:\n" << text.getDecryptedText() << "\n";
+    std::cout << "\nEncrypted Text:\n" << text.getEncryptedText() << "\n";
 
     return 0;
 }

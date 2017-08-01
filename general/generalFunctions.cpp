@@ -31,21 +31,7 @@ namespace general
 
     int gcd(int x, int y)
     {
-        int remainder;
-        int min;
-        if(x>y)
-        {
-            remainder = x % y;
-            min = y;
-        }
-        else
-        {
-            remainder = y % x;
-            min = x;
-        }
-        if(remainder == 0)
-            return min;
-        return general::gcd(min, remainder);
+        return y == 0 ? x : gcd(y, x % y);
     }
 
     int getCharacterNum(char character,const std::string &alphabet)

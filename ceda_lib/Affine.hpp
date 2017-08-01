@@ -28,7 +28,7 @@ namespace ceda
         void setKey(int,int);
         void encrypt();
         void decrypt();
-        void printTable();
+        void printTable(std::string = ""); //spacing
 
         std::string getEncryptedText() const { return m_encryptedText; }
         std::string getDecryptedText() const { return m_decryptedText; }
